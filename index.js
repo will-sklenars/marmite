@@ -17,7 +17,7 @@ var scene = new THREE.Scene();
 // scene.add(light);
 
 // // Load the background texture
-// var backgroundtexture = THREE.ImageUtils.loadTexture( '../images/universe.jpg' );
+// var backgroundtexture = THREE.ImageUtils.loadTexture( './images/universe.jpg' );
 // var backgroundMesh = new THREE.Mesh(
 //     new THREE.PlaneGeometry( 2, 2, 0 ),
 //     new THREE.MeshBasicMaterial({
@@ -65,7 +65,7 @@ renderer.setPixelRatio( window.devicePixelRatio );
 renderer.setSize( window.innerWidth, window.innerHeight );
 container.appendChild( renderer.domElement );
 
-// var toastmap = THREE.ImageUtils.loadTexture('../images/hi_res_toast.jpg');
+// var toastmap = THREE.ImageUtils.loadTexture('./images/hi_res_toast.jpg');
 var geometry = new THREE.SphereGeometry( 7000, 80, 80 );
 // var material = new THREE.MeshBasicMaterial( {map: toastmap, side: THREE.DoubleSide} );
 var material = new THREE.MeshBasicMaterial( {color: 0xffffff, transparent: true, side: THREE.DoubleSide} );
@@ -111,9 +111,9 @@ function onDocumentMouseDown( event ) {
 
   if ( intersects.length > 0 ) {
 
-  var labelmap = THREE.ImageUtils.loadTexture('../images/marmitegasm_label2.jpg');
-  var topmap = THREE.ImageUtils.loadTexture('../images/cap_red.jpg');
-  var bottommap = THREE.ImageUtils.loadTexture('../images/bottom.jpg');
+  var labelmap = THREE.ImageUtils.loadTexture('./images/marmitegasm_label2.jpg');
+  var topmap = THREE.ImageUtils.loadTexture('./images/cap_red.jpg');
+  var bottommap = THREE.ImageUtils.loadTexture('./images/bottom.jpg');
 
   var materials = [
   new THREE.MeshBasicMaterial(
@@ -207,6 +207,6 @@ function getRandomNumber(min, max) {
    return Math.random() * (max - min) + min;
 }
 
-var audio = new Audio('../audio/danube.mp3');
+var audio = new Audio('./audio/danube.mp3');
 audio.play();
 
