@@ -1,0 +1,40 @@
+{
+  "name": "marmite",
+  "version": "1.0.0",
+  "description": "lotsa marmites",
+  "main": "index.js",
+  "scripts": {
+    "start": "budo index.js -d --serve bundle.js --live",
+    "build": "browserify index.js -o bundle.js -g uglifyify",
+    "test": "browserify test.js | smokestack | tap-spec",
+    "dist": "mkdir -p dist && bash -c 'cp *.{js,html,css} dist'",
+    "push": "gh-pages -d dist",
+    "deploy": "npm run build && npm run dist && npm run push"
+  },
+  "browserify": {
+    "transform": []
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SkwynethPaltrow/marmite"
+  },
+  "author": "SkwynethPaltrow",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SkwynethPaltrow/marmite/issues"
+  },
+  "homepage": "https://github.com/SkwynethPaltrow/marmite",
+  "dependencies": {
+    "three": "^0.71.0"
+  },
+  "devDependencies": {
+    "browserify": "^10.0.0",
+    "budo": "^4.0.0",
+    "gh-pages": "^0.3.0",
+    "smokestack": "^3.3.0",
+    "tap-spec": "^4.0.2",
+    "tape": "^4.0.0",
+    "uglifyify": "^3.0.1",
+    "watchify": "^3.1.0"
+  }
+}
