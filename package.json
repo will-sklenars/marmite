@@ -7,7 +7,7 @@
     "start": "budo index.js -d --serve bundle.js --live",
     "build": "browserify index.js -o bundle.js -g uglifyify",
     "test": "browserify test.js | smokestack | tap-spec",
-    "dist": "mkdir -p dist && bash -c 'cp *.{js,html,css} dist'",
+    "dist": "mkdir -p dist && bash -c 'cp -r audio images *.{js,html,css} dist'",
     "push": "gh-pages -d dist",
     "deploy": "npm run build && npm run dist && npm run push"
   },
@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/SkwynethPaltrow/marmite",
   "dependencies": {
+    "jquery": "^2.1.4",
     "three": "^0.71.0"
   },
   "devDependencies": {
