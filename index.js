@@ -11,32 +11,10 @@ require('./lib/nav')
 
 var scene = new THREE.Scene();
 
-//the commented code is for toast planet and universe backdrop
-// var light = new THREE.PointLight(0xEEEEEE);
-// light.position.set(20, 0, 20);
-// scene.add(light);
-
-// // Load the background texture
-// var backgroundtexture = THREE.ImageUtils.loadTexture( './images/universe.jpg' );
-// var backgroundMesh = new THREE.Mesh(
-//     new THREE.PlaneGeometry( 2, 2, 0 ),
-//     new THREE.MeshBasicMaterial({
-//         map: backgroundtexture
-//     }));
-
-//   backgroundMesh .material.depthTest = false;
-//   backgroundMesh .material.depthWrite = false;
-
-//   // Create your background scene
-//   var backgroundScene = new THREE.Scene();
-//   var backgroundCamera = new THREE.Camera();
-//   backgroundScene .add(backgroundCamera );
-//   backgroundScene .add(backgroundMesh );
-
 var camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 10000 );
 camera.position.x = 0
 camera.position.y = 0
-camera.position.z = 2050
+camera.position.z = 1750
 
 var controls = new THREE.OrbitControls( camera );
 var raycaster = new THREE.Raycaster();
@@ -65,12 +43,12 @@ renderer.setPixelRatio( window.devicePixelRatio );
 renderer.setSize( window.innerWidth, window.innerHeight );
 container.appendChild( renderer.domElement );
 
-// var toastmap = THREE.ImageUtils.loadTexture('./images/hi_res_toast.jpg');
-var geometry = new THREE.SphereGeometry( 7000, 80, 80 );
-// var material = new THREE.MeshBasicMaterial( {map: toastmap, side: THREE.DoubleSide} );
-var material = new THREE.MeshBasicMaterial( {color: 0xffffff, transparent: true, side: THREE.DoubleSide} );
-var toast = new THREE.Mesh(geometry, material )
-scene.add( toast )
+
+var geometry = new THREE.SphereGeometry( 2500, 80, 80 );
+var material = new THREE.MeshBasicMaterial( {color: 0xffffff, side: THREE.DoubleSide, transparent: true} );
+var globe = new THREE.Mesh(geometry, material )
+scene.add( globe )
+
 
 document.addEventListener( 'mousedown', onDocumentMouseDown, false );
 // document.addEventListener( 'mousedown', onDocumentMouseDownShift, false );
@@ -100,14 +78,13 @@ function onDocumentTouchStart( event ) {
 
 function onDocumentMouseDown( event ) {
 
-  // event.preventDefault();
 
   mouse.x = ( event.clientX / renderer.domElement.width ) * 2 - 1;
   mouse.y = - ( event.clientY / renderer.domElement.height ) * 2 + 1;
 
   raycaster.setFromCamera( mouse, camera );
 
-  var intersects = raycaster.intersectObjects( [toast] );
+  var intersects = raycaster.intersectObjects( [globe] );
 
   if ( intersects.length > 0 ) {
 
@@ -207,6 +184,4 @@ function getRandomNumber(min, max) {
    return Math.random() * (max - min) + min;
 }
 
-var audio = new Audio('./audio/danube.mp3');
-audio.play();
 
