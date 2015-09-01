@@ -11,8 +11,6 @@ var Marmite = require('./lib/marmite');
 
 require('./lib/CanvasRenderer')
 require('./lib/OrbitControls')
-require('./lib/Projector')
-require('./lib/nav')
 
 init()
 
@@ -25,7 +23,9 @@ function init() {
   scene = new THREE.Scene();
 
   camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 30000 );
-  camera.position.z = 200
+  camera.position.x = -50
+  camera.position.y = -50
+  camera.position.z = -50
 
   controls = new THREE.OrbitControls( camera );
 
@@ -43,7 +43,6 @@ window.addEventListener( 'resize', onWindowResize, false );
 
 function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
   renderer.setSize( window.innerWidth, window.innerHeight );
 }
 
